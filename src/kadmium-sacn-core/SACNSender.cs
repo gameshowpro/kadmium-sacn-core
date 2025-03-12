@@ -70,6 +70,49 @@ namespace kadmium_sacn_core
             }
         }
 
+        /// <summary>
+        /// The network interface with the supplied IPAddress will be used to send multicast packets. If this is not called, the default interface will be used.
+        /// </summary>
+        public void SetMulticastInterface(IPAddress sourceAddress)
+        {
+            // Set the outgoing multicast interface
+            try
+
+            {
+                SocketOptionLevel level;
+                byte[] addressArray;
+                switch (sourceAddress.AddressFamily)
+                {
+                    case AddressFamily.InterNetwork:
+                        level = SocketOptionLevel.IP;
+                        addressArray = sourceAddress.GetAddressBytes();
+                        break;
+                    case AddressFamily.InterNetworkV6:
+                        level = SocketOptionLevel.IPv6;
+                        addressArray = BitConverter.GetBytes((int)sourceAddress.ScopeId);
+                        break;
+                    default:
+                        throw new Exception("Unsupported address family");
+                }
+                Socket.Client.SetSocketOption(
+                    level,
+                    SocketOptionName.MulticastInterface,
+                    addressArray
+                );
+            }
+            catch (SocketException err)
+            {
+                Console.WriteLine("SetSendInterface: Unable to set the multicast interface: {0}", err.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The network interface with the supplied index will be used to send multicast packets. If this is not called, the default interface will be used.
+        /// </summary>
+        public void SetMulticastInterface(int sourceIndex)
+            => Socket.Client.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastInterface, IPAddress.HostToNetworkOrder(sourceIndex));
+
         public void Close()
         {
             //Socket.Close();
