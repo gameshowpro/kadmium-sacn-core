@@ -1,15 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <AssemblyName>kadmium-sacn-core</AssemblyName>
-    <PackageId>kadmium-sacn-core</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>gp-kadmium-sacn-core</AssemblyName>
+    <PackageId>gp-kadmium-sacn-core</PackageId>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>0.0.11</Version>
+    <Version>1.0.0</Version>
     <Authors>Jesse Higginson;Hakan Lindestaf</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Kadmium-sACN-Core</Title>
@@ -17,9 +16,8 @@
     <Description>A simple sACN library for .NET Core</Description>
     <Copyright>Copyright 2016-2018 Jesse Higginson</Copyright>
     <PackageTags>sACN;DMX</PackageTags>
-    <PackageReleaseNotes>Parsing fixes, added a listener</PackageReleaseNotes>
-    <AssemblyVersion>0.0.11.0</AssemblyVersion>
-    <FileVersion>0.0.10.0</FileVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
 
 </Project>
